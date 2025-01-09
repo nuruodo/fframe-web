@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FFrame - Fast Frame Encoder: The fastest and most reliable video encoding solution for Windows and macOS.">
+    <meta name="author" content="FFrame Development Team">
+    <title>FFrame</title>
+    <link rel="icon" href="FFrame_Favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1a1a1a;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .tabs {
+            background: #3a3a3a;
+            display: flex;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 0px;
+            border-radius: 8px 8px 0 0;
+            justify-content: space-evenly;
+        }
+
+        .tabs button {
+            color: #fff;
+            background: #3a3a3a;
+            border: none;
+            padding: 12px 18px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            flex-grow: 1;
+            border-radius: 8px 8px 0 0;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .tabs button:not(:last-child) {
+            border-right: 3px solid #1a1a1a;
+        }
+
+        .tabs button.active {
+            background: #5B75C7;
+        }
+
+        .tabs button:hover {
+            background: #5B75C7;
+        }
+
+        .content {
+            background: #2d2d2d;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 60%;
+        }
+
+        .hero-title {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: left;
+            margin-bottom: 0px;
+        }
+
+        .hero-title h1 {
+            font-size: 2.84em;
+            margin: 0;
+        }
+
+        .hero-title p {
+            font-size: 1.25em;
+            margin-top: 1px;
+        }
+
+        .download-button {
+            background: #5B75C7;
+            color: #fff;
+            border: none;
+            font-size: 1.4em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            padding: 15px 30px;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .download-button:hover {
+            background: #4862a8;
+            transform: translateY(-3px);
+        }
+
+        .download-button:active {
+            transform: translateY(1px);
+        }
+
+        .discord-widget {
+            width: 270px;
+            height: 815px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .features {
+            margin-top: 20px;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .features h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+            color: #5B75C7;
+        }
+
+        .features ul {
+            margin: 0;
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        .features li {
+            margin: 5px 0;
+        }
+
+        .features ul ul {
+            list-style-type: circle;
+            margin: 5px 0 0 20px;
+        }
+
+        .footer {
+            width: 100%;
+            max-width: 800px;
+            background: #3a3a3a;
+            color: #fff;
+            text-align: center;
+            padding: 15px 20px;
+            border-radius: 0 0 8px 8px;
+            font-size: 0.9em;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer a {
+            color: #5B75C7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #4862a8;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                height: auto;
+            }
+
+            .tabs {
+                justify-content: space-between;
+                flex-wrap: nowrap;
+            }
+
+            .tabs button {
+                flex-grow: 1;
+                min-width: 100px;
+                margin: 0 5px;
+                text-align: center;
+                font-size: 0.9em;
+                padding: 10px 12px;
+            }
+
+            .content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero {
+                width: 100%;
+                align-items: center;
+            }
+
+            .hero-title h1 {
+                font-size: 2em;
+            }
+
+            .hero-title p {
+                font-size: 1em;
+            }
+
+            .download-button {
+                font-size: 1.2em;
+                padding: 12px 25px;
+            }
+
+            .discord-widget {
+                width: 100%;
+                max-width: 400px;
+                height: 500px;
+                margin-top: 20px;
+            }
+
+            .footer {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <button class="active">About</button>
+        <button>Releases</button>
+        <button>Changelog</button>
+        <button>Supporters</button>
+        <button>Docs</button>
+    </div>
+
+    <div class="content">
+        <div class="hero">
+            <div class="hero-title">
+                <h1>Fast Frame Encoder</h1>
+                <p>A modern video encoding tool by madelyn1337</p>
+            </div>
+            <button class="download-button">Download FFrame v0.1.5</button>
+
+            <div class="features">
+                <h2>Modern Feature Packed UI</h2>
+                <ul>
+                    <li>Polished Handbrake-like User Interface</li>
+                    <li>Full ffmpeg custom input access</li>
+                    <li>Export codec support:
+                        <ul>
+                            <li>h264 & h265</li>
+                            <li>Prores</li>
+                            <li>AV1</li>
+                        </ul>
+                    </li>
+                    <li>Simple tab to prepare footage for standard editing software</li>
+                    <li>Accurate DV & HDR to SDR conversion utilizing DV SDR <br /> trim passes and the reinhard tonemapping algorithm</li>
+                    <li>Screenshot creation tool with limited compression</li>
+                    <li>In-Memory Export Preset Manager</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="discord-widget">
+            <iframe src="https://discord.com/widget?id=1046070978146488434&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 FFrame Development Team. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a> | <a href="dmca.html">DMCA</a> | <a href="terms-of-service.html">Terms of Service</a>
+    </div>
+</body>
+</html>
