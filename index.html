@@ -60,12 +60,13 @@
         .content {
             background: #2d2d2d;
             width: 100%;
+            height: 90%;
             max-width: 800px;
             margin-top: 0;
             padding: 20px;
             box-sizing: border-box;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: flex-start;
         }
 
@@ -119,14 +120,70 @@
             transform: translateY(1px);
         }
 
+/* Existing styles for .content, .footer, .discord-widget */
+
+/* Keep the widget at the top-right on large screens */
         .discord-widget {
             width: 270px;
-            height: 815px;
+            height: 792px;
+            margin-left: 50px;
         }
+
+        /* Media query for small screen sizes (mobile/tablets) */
+        @media screen and (max-width: 1080px) {
+            /* Stack content and widget vertically */
+            .content {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                height: auto;  /* Remove the fixed height */
+                padding-bottom: 0;  /* Adjust padding */
+            }
+
+            /* Move the discord widget below the content */
+            .discord-widget {
+                width: 60%; /* Make widget take full width on small screens */
+                height: 400px; /* Adjust the height for small screens */
+                margin-top: 20px; /* Add space between content and widget */
+                margin-bottom: 20px;
+                margin-left: 0px;
+                position: relative; /* Make it a block-level element */
+            }
+
+            .tabs {
+                width: 100%; /* Make tabs stretch across the full width */
+                flex-direction: row; /* Ensure buttons are in a row */
+                justify-content: space-between; /* Distribute space evenly between buttons */
+                padding: 0; /* Remove padding */
+            }
+
+            .tabs button {
+                width: auto; /* Let each button take as much space as it needs */
+                flex-grow: 1; /* Allow buttons to stretch to fill space evenly */
+                min-width: 50px; /* Prevent buttons from becoming too small */
+                border-radius: 0; /* Ensure buttons align neatly with no rounded corners */
+                border-right: 0; /* Remove right border */
+                font-size: 0.8em;
+                text-align: center;
+                padding-right: 0;
+                padding-left: 0;
+            }
+
+            .tabs button.active {
+                background: #5B75C7;
+            }
+
+            .tabs button:hover {
+                background: #5B75C7;
+            }
+        }
+
 
         iframe {
             width: 100%;
             height: 100%;
+            max-height: 90%;
             border: none;
         }
 
@@ -180,60 +237,6 @@
         .footer a:hover {
             color: #4862a8;
         }
-
-        @media (max-width: 768px) {
-            body {
-                height: auto;
-            }
-
-            .tabs {
-                justify-content: space-between;
-                flex-wrap: nowrap;
-            }
-
-            .tabs button {
-                flex-grow: 1;
-                min-width: 100px;
-                margin: 0 5px;
-                text-align: center;
-                font-size: 0.9em;
-                padding: 10px 12px;
-            }
-
-            .content {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero {
-                width: 100%;
-                align-items: center;
-            }
-
-            .hero-title h1 {
-                font-size: 2em;
-            }
-
-            .hero-title p {
-                font-size: 1em;
-            }
-
-            .download-button {
-                font-size: 1.2em;
-                padding: 12px 25px;
-            }
-
-            .discord-widget {
-                width: 100%;
-                max-width: 400px;
-                height: 500px;
-                margin-top: 20px;
-            }
-
-            .footer {
-                font-size: 0.9em;
-            }
-        }
     </style>
 </head>
 <body>
@@ -281,5 +284,18 @@
     <div class="footer">
         &copy; 2025 FFrame Development Team. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a> | <a href="dmca.html">DMCA</a> | <a href="terms-of-service.html">Terms of Service</a>
     </div>
+
+    <script>
+        // Adjust iframe height dynamically based on content height
+        function adjustIframeHeight() {
+            const contentDiv = document.querySelector('.content');
+            const iframe = document.querySelector('.discord-widget iframe');
+            iframe.style.height = `${contentDiv.offsetHeight}px`;
+        }
+
+        // Call function to adjust iframe height on load and resize
+        window.addEventListener('load', adjustIframeHeight);
+        window.addEventListener('resize', adjustIframeHeight);
+    </script>
 </body>
 </html>
